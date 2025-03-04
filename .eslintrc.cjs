@@ -50,7 +50,7 @@ module.exports = {
     ],
 
     'import/extensions': ['off', 'never'],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: false, "optionalDependencies": false, "peerDependencies": false }],
 
     '@typescript-eslint/no-empty-interface': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
@@ -173,9 +173,12 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      typescript: {},
+      typescript: {
+        alwaysTryTypes: true,
+      },
       node: {
-        moduleDirectory: ["node_modules", "src"]
+        moduleDirectory: ["node_modules", "src"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
     }
     },
   },
