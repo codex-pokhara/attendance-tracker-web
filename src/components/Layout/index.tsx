@@ -10,7 +10,7 @@ function Layout() {
       {/* <TopLoader /> */}
       {/* <Navbar /> */}
       <div>Top Loaders</div>
-   
+
       <div className="min-h-[120vh]">
         <Outlet />
       </div>
