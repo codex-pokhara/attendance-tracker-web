@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-
 // import Footer from '../Footer';
 // import Navbar from '../Navbar/Navbar';
 // import ScrollToTop from '../ScrollToTop';
@@ -11,8 +10,8 @@ function Layout() {
       {/* <TopLoader /> */}
       {/* <Navbar /> */}
       <div>Top Loader</div>
-      <div>Navbar</div>
-      <div className="min-h-[60vh]">
+   
+      <div className="min-h-[120vh]">
         <Outlet />
       </div>
       <div>Footer</div>

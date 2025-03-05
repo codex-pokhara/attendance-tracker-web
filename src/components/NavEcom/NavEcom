@@ -1,0 +1,163 @@
+ const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeNavItem, setActiveNavItem] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { 
+      name: 'Women', 
+      href: '/women', 
+      subCategories: [
+        {
+          title: 'Featured',
+          items: ['All Women\'s', 'New Arrivals', 'Best Sellers', 'Essentials', 'Organic Cashmere', 'Cashmere Sneakers', 'Gift Card']
+        },
+        {
+          title: 'Sweaters',
+          items: ['Sweaters', 'Cardigans', 'Hoodies']
+        },
+        {
+          title: 'Clothing',
+          items: ['Shirts', 'Pants', 'Coats & Blazers', 'Loungewear']
+        },
+        {
+          title: 'Collections',
+          items: ['Gifts Guide', 'New Accessories', 'FW24/25', 'FW24/25 Organic', 'Responsible Collection', 'Cashmere Footwear']
+        }
+      ]
+    },
+    { 
+      name: 'Men', 
+      href: '/men',
+      subCategories: [
+        {
+          title: 'Featured',
+          items: ['All Men\'s', 'New Arrivals', 'Best Sellers', 'Essentials', 'Organic Cashmere', 'Cashmere Sneakers', 'Gift Card']
+        },
+        {
+          title: 'Sweaters',
+          items: ['Sweaters', 'Cardigans', 'Hoodies']
+        },
+        {
+          title: 'Clothing',
+          items: ['Shirts', 'Pants', 'Coats & Blazers', 'Loungewear']
+        },
+        {
+          title: 'Collections',
+          items: ['Gifts Guide', 'New Accessories', 'FW24/25', 'FW24/25 Organic', 'Responsible Collection', 'Cashmere Footwear']
+        }
+      ]
+    },
+    { name: 'Kids', href: '/kids' },
+    { name: 'Accessories', href: '/accessories' },
+    { name: 'Home', href: '/home' },
+    { name: 'Sale', href: '/sale', className: 'text-red-500' },
+    { name: 'About Us', href: '/about' }
+  ];
+
+  <nav 
+  className={`fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300 
+    ${isScrolled ? 'shadow-sm py-2' : 'py-4'}`}
+>
+  <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+    {/* Mobile Menu Toggle */}
+    <button 
+      className="md:hidden"
+      onClick={() => setIsMenuOpen(!isMenuOpen)}
+    >
+      <Menu size={24} />
+    </button>
+
+    {/* Logo */}
+    <div className="text-2xl font-bold tracking-wider">
+      GOBI
+    </div>
+
+    {/* Desktop Navigation */}
+    <div className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
+      {navItems.map((item) => (
+        <div 
+          key={item.name} 
+          className="relative group"
+          onMouseEnter={() => setActiveNavItem(item.name)}
+          onMouseLeave={() => setActiveNavItem(null)}
+        >
+          <a 
+            href={item.href} 
+            className={`text-sm uppercase tracking-wider 
+              transition-all duration-300 ease-in-out
+              relative after:absolute after:bottom-[-5px] after:left-0 
+              after:w-0 after:h-[2px] after:bg-black 
+              hover:after:w-full after:transition-all after:duration-300
+              ${item.className || ''}`}
+          >
+            {item.name}
+          </a>
+          {item.subCategories && activeNavItem === item.name && (
+            <div className="fixed left-1/2 transform -translate-x-1/2 w-screen bg-white shadow-lg top-full mt-4 p-8">
+              <MaxWidthWrapper>
+              <div className="grid grid-cols-4 gap-8">
+                {item.subCategories.map((category) => (
+                  <div key={category.title}>
+                    <h3 className="font-bold mb-4 text-sm uppercase tracking-wider">
+                      {category.title}
+                    </h3>
+                    {category.items.map((subItem) => (
+                      <a 
+                        key={subItem} 
+                        href="#" 
+                        className="block py-2 text-sm hover:text-gray-600 transition-colors"
+                      >
+                        {subItem}
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    {/* Icons */}
+    <div className="flex items-center space-x-4">
+      <button className="hover:text-gray-600 transition-colors">
+        <Search size={20} />
+      </button>
+      <button className="hover:text-gray-600 transition-colors">
+        <User size={20} />
+      </button>
+      <button className="hover:text-gray-600 transition-colors">
+        <ShoppingBag size={20} />
+      </button>
+    </div>
+  </div>
+
+  {/* Mobile Menu Overlay */}
+  {isMenuOpen && (
+    <div className="fixed inset-0 bg-white z-40 md:hidden">
+      <div className="flex flex-col p-6 space-y-4">
+        {navItems.map((item) => (
+          <a 
+            key={item.name} 
+            href={item.href} 
+            className={`text-lg uppercase tracking-wider ${item.className || ''}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+</nav>
