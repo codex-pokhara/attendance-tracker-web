@@ -174,12 +174,12 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {
-        project: './tsconfig.json'
+        alwaysTryTypes: true,
       },
-      alias: {
-        map: [['@', './src']],
-        extensions: ['.ts', '.tsx', '.js', '.jsx']
-      }
+      node: {
+        moduleDirectory: ["node_modules", "src"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
     }
+    },
   },
 };

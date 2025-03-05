@@ -42,7 +42,7 @@ export function ThemeToggle() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 ml-auto">
       <Sun className="h-4 w-4 text-muted-foreground" />
       <Switch checked={theme === 'dark'} onCheckedChange={() => toggleTheme()} />
       <Moon className="h-4 w-4 text-muted-foreground" />
