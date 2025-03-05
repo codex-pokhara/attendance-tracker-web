@@ -9,7 +9,7 @@ function Layout() {
     <div className="relative">
       {/* <TopLoader /> */}
       {/* <Navbar /> */}
-      <div>Top Loader</div>
+      <div>Top Loaders</div>
    
       <div className="min-h-[120vh]">
         <Outlet />
