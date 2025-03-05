@@ -1,4 +1,6 @@
 import { Outlet } from 'react-router-dom';
+
+import { ThemeToggle } from '../ThemeToggler';
 // import Footer from '../Footer';
 // import Navbar from '../Navbar/Navbar';
 // import ScrollToTop from '../ScrollToTop';
@@ -9,9 +11,9 @@ function Layout() {
     <div className="relative">
       {/* <TopLoader /> */}
       {/* <Navbar /> */}
-      <div>Top Loaders</div>
+      <div><ThemeToggle /></div>
 
-      <div className="min-h-[120vh]">
+      <div className="min-h-[60vh]">
         <Outlet />
       </div>
       <div>Footer</div>
