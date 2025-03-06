@@ -17,8 +17,6 @@ import {
 
 import { CustomSidebar } from '../CustomSidebar';
 import { ThemeToggle } from '../ThemeToggler';
-// import Footer from '../Footer';
-// import Navbar from '../Navbar/Navbar';
 // import ScrollToTop from '../ScrollToTop';
 // import TopLoader from '../TopLoader/TopLoader';
 
@@ -26,7 +24,6 @@ function Layout() {
   return (
     <div className="relative">
       {/* <TopLoader /> */}
-      {/* <Navbar /> */}
       <SidebarProvider>
         <CustomSidebar />
         <SidebarInset>
@@ -56,7 +53,6 @@ function Layout() {
         </SidebarInset>
       </SidebarProvider>
       <div>Footer</div>
-      {/* <Footer /> */}
       {/* <ScrollToTop /> */}
     </div>
   );
