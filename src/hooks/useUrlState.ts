@@ -33,13 +33,14 @@ function useUrlSearchState<VALUE, KEY extends string>(
   const getValues = useCallback(
     (
       currentKeys: KEY[],
-      currentUrlParams: URLSearchParams) => currentKeys.reduce<Record<KEY, SearchValueFromUrl>>(
-        (acc, val) => ({
-          ...acc,
-          [val]: currentUrlParams.get(val),
-        }),
+      currentUrlParams: URLSearchParams,
+    ) => currentKeys.reduce<Record<KEY, SearchValueFromUrl>>(
+      (acc, val) => ({
+        ...acc,
+        [val]: currentUrlParams.get(val),
+      }),
         {} as Record<KEY, SearchValueFromUrl>,
-      ),
+    ),
     [],
   );
 

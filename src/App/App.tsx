@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Layout from '@/components/Layout';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { Button } from '@/components/ui/button';
 
 const router = createBrowserRouter([
@@ -17,10 +18,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider
-      router={router}
-    />
-
+    <ThemeProvider>
+      <RouterProvider
+        router={router}
+      />
+    </ThemeProvider>
   );
 }
 
